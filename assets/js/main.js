@@ -133,7 +133,7 @@
     v: 100, duration: 1.5, ease: 'power2.inOut',
     onUpdate: () => {
       const val = Math.round(counter.v);
-      preNum.textContent = val;
+      if (preNum) preNum.textContent = val;
       if (preFill) preFill.style.width = val + '%';
     },
     onComplete: intro
