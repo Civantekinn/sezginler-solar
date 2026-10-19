@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sezginler Solar Enerji | Mühendislik &amp; GES Teknolojileri</title>
+<meta name="description" content="Sezginler Solar Enerji: Tier-1 N-Type TOPCon GES çözümleri, anahtar teslim çatı ve arazi güneş enerjisi santralleri, AR-GE ve ücretsiz saha keşfi.">
+<meta name="theme-color" content="#02050d">
+<link rel="icon" type="image/png" href="assets/img/logo-emblem.png?v=5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=7">
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div class="pre" id="pre">
+  <div class="pre-grid"></div>
+  <div class="pre-core">
+    <div class="pre-ring"></div>
+    <div class="pre-ring r2"></div>
+    <img src="assets/img/logo-emblem.png?v=5" alt="Sezginler Solar Enerji" class="pre-logo-emblem">
+  </div>
+  <img src="assets/img/logo-wordmark.png?v=5" alt="Sezginler Solar Enerji" class="pre-logo-wordmark">
+  <div class="pre-sub">FOTOVOLTAİK MÜHENDİSLİK SİSTEMLERİ YÜKLENİYOR</div>
+  <div class="pre-bar"><i id="preFill"></i></div>
+  <div class="pre-count"><span id="preNum">0</span>%</div>
+</div>
+
+<div class="cursor" id="cur"></div><div class="cursor-ring" id="curR"></div>
+<div class="bar" id="bar"></div>
+
+<!-- NAV -->
+<header class="nav solid" id="nav">
+  <a href="#home" class="logo" data-cur aria-label="Sezginler Solar Enerji Ana Sayfa">
+    <span class="logo-badge">
+      <img src="assets/img/logo-emblem.png?v=5" alt="Sezginler Solar Amblem" class="logo-emblem">
+    </span>
+    <img src="assets/img/logo-wordmark.png?v=5" alt="Sezginler Solar Enerji" class="logo-wordmark">
+  </a>
+  <nav class="nav-links">
+    <a href="#about" data-cur>Kurumsal</a>
+    <a href="#mission" data-cur>Misyon</a>
+    <a href="#ges" data-cur>GES Çözümleri</a>
+    <a href="#calc" data-cur>Fizibilite &amp; Yatırım</a>
+    <a href="#kesif" data-cur>Keşif</a>
+    <a href="#contact" data-cur>İletişim</a>
+  </nav>
+  <div class="nav-right">
+    <a href="#contact" class="pill" data-cur data-magnetic>Ücretsiz Teklif Al</a>
+    <button class="burger" id="burger" aria-label="Menü"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mm">
+  <div class="mm-inner">
+    <div class="mm-links">
+      <a href="#home">Ana Sayfa</a>
+      <a href="#about">Kurumsal</a>
+      <a href="#mission">Misyon &amp; Vizyon</a>
+      <a href="#ges">GES Çözümleri</a>
+      <a href="#calc">Fizibilite &amp; Yatırım</a>
+      <a href="#arge">AR-GE &amp; 3D Modül</a>
+      <a href="#kesif">Mühendislik Keşfi</a>
+      <a href="#contact">İletişim</a>
+    </div>
+    <div class="mm-cta">
+      <a href="#contact" class="btn solid full-btn">Ücretsiz Keşif &amp; Teklif Al →</a>
+      <a href="tel:+905467285656" class="mm-tel">☎ 0546 728 5656 · Ramazan Sezgin</a>
+    </div>
+  </div>
+</div>
+
+<!-- SIDE DOTS -->
+<ul class="dots" id="dots">
+  <li data-t="home"><a href="#home"><span>Giriş</span></a></li>
+  <li data-t="about"><a href="#about"><span>Kurumsal</span></a></li>
+  <li data-t="calc"><a href="#calc"><span>Fizibilite</span></a></li>
+  <li data-t="mission"><a href="#mission"><span>Misyon</span></a></li>
+  <li data-t="ges"><a href="#ges"><span>Çözümler</span></a></li>
+  <li data-t="arge"><a href="#arge"><span>AR-GE</span></a></li>
+  <li data-t="kesif"><a href="#kesif"><span>Keşif</span></a></li>
+  <li data-t="contact"><a href="#contact"><span>İletişim</span></a></li>
+</ul>
+
+<!-- INTERACTIVE 3D HUD DOCK -->
+<div class="hud-dock" id="hudDock">
+  <div class="hud-title"><span class="pulse-dot"></span> 3D PANEL KONTROLÜ</div>
+  <button type="button" class="hud-btn active" data-cam="default" data-cur><span>◈</span> Tam Panel</button>
+  <button type="button" class="hud-btn" data-cam="explode" data-cur><span>⧉</span> Katmanları Aç</button>
+  <button type="button" class="hud-btn" data-cam="back" data-cur><span>↻</span> Arka Yüz &amp; J-Box</button>
+  <button type="button" class="hud-btn" data-cam="macro" data-cur><span>⊕</span> Hücre Detayı</button>
+</div>
+
+<canvas id="gl"></canvas>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="home" data-pose="hero">
+  <div class="bg"><img src="assets/img/hero.jpg" alt="Sezginler Solar GES santrali" id="heroImg"></div>
+  <div class="veil v-hero"></div>
+  <div class="wrap hero-c">
+    <div class="hero-badge" data-fade>
+      <span class="pulse-dot"></span>
+      <span>YENİ NESİL 144 HALF-CUT N-TYPE TOPCON TEKNOLOJİSİ</span>
+    </div>
+    <h1 data-split="hero">Güneşi <span class="grad">mühendislikle</span><br>güce dönüştürüyoruz.</h1>
+    <p class="lead" data-fade>Konut, fabrika, tarımsal sulama ve arazi santralleri için yüksek verimli Tier-1 güneş panelleriyle anahtar teslim, 25 yıl garantili GES mühendisliği.</p>
+    <div class="row-btn" data-fade>
+      <a href="#contact" class="btn solid" data-cur data-magnetic>Ücretsiz Keşif &amp; Teklif Al →</a>
+      <a href="#ges" class="btn glass" data-cur data-magnetic>GES Çözümlerini İncele</a>
+    </div>
+
+    <!-- 3D TELEMETRY CALLOUTS -->
+    <div class="hero-telemetry" data-fade>
+      <div class="tel-chip">
+        <small>MODÜL MİMARİSİ</small>
+        <strong>SZ-550M Bi-Facial</strong>
+      </div>
+      <div class="tel-chip">
+        <small>HÜCRE MATRİSİ</small>
+        <strong>144 Half-Cut (10BB)</strong>
+      </div>
+      <div class="tel-chip">
+        <small>KORUMA SINIFI</small>
+        <strong>IP68 · 3.2mm ARC Cam</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-stats wrap">
+    <div class="stat-card" data-spotlight>
+      <small>PERFORMANS GARANTİSİ</small>
+      <b data-count="25" data-suf=" Yıl">0</b>
+      <span>Lineer güç çıkış güvencesi</span>
+    </div>
+    <div class="stat-card" data-spotlight>
+      <small>MÜHENDİSLİK &amp; KURULUM</small>
+      <b data-count="100" data-suf="%">0</b>
+      <span>Anahtar teslim EPC hizmet</span>
+    </div>
+    <div class="stat-card" data-spotlight>
+      <small>UZAKTAN TELEMETRİ</small>
+      <b data-count="24" data-suf="/7">0</b>
+      <span>Canlı SCADA &amp; mobil izleme</span>
+    </div>
+    <div class="stat-card" data-spotlight>
+      <small>YERİNDE MÜHENDİSLİK</small>
+      <b data-count="0" data-suf=" ₺">0</b>
+      <span>Ücretsiz drone &amp; saha keşfi</span>
+    </div>
+  </div>
+  <div class="scroll-i"><i></i>KAYDIR</div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee"><div class="mq-track">
+  <span>N-TYPE TOPCON</span><em>✦</em><span>ANAHTAR TESLİM GES</span><em>✦</em><span>ENDÜSTRİYEL ÇATI</span><em>✦</em><span>TARIMSAL SULAMA</span><em>✦</em><span>ENERJİ DEPOLAMA</span><em>✦</em><span>SCADA İZLEME</span><em>✦</em>
+  <span>N-TYPE TOPCON</span><em>✦</em><span>ANAHTAR TESLİM GES</span><em>✦</em><span>ENDÜSTRİYEL ÇATI</span><em>✦</em><span>TARIMSAL SULAMA</span><em>✦</em><span>ENERJİ DEPOLAMA</span><em>✦</em><span>SCADA İZLEME</span><em>✦</em>
+</div></div>
+
+<!-- ABOUT -->
+<section class="sec about" id="about" data-pose="none">
+  <div class="wrap grid2">
+    <div class="img-frame" data-parallax-wrap data-spotlight>
+      <img src="assets/img/about.jpg" alt="Çatı GES kurulumu" data-parallax>
+      <div class="frame-hud">
+        <div class="fh-top"><span>IEC 61215 / TÜV RHEINLAND</span><b>TIER-1 STANDARD</b></div>
+        <div class="fh-bot">
+          <div><small>YILLIK ORTALAMA GÜNEŞLENME</small><b>2.740+ Saat</b></div>
+          <div><small>ORTALAMA AMORTİSMAN</small><b>3.2 – 4.5 Yıl</b></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="kicker" data-fade>KURUMSAL MÜKEMMELLİK</p>
+      <h2 data-split>Mühendislik disiplini,<br><span class="grad">kusursuz enerji.</span></h2>
+      <p class="txt" data-fade>Sezginler Solar Enerji, Türkiye'nin yüksek güneşlenme potansiyelini konut, sanayi ve tarım yatırımcıları için en yüksek geri dönüşlü finansal kazanca dönüştürür. Statik çatı analizinden TEDAŞ/EDAŞ çağrı mektubu süreçlerine, Tier-1 kurulumdan 7/24 uzaktan izlemeye kadar tüm aşamaları tek merkezden yönetiyoruz.</p>
+      <div class="bento-mini" data-fade>
+        <div class="bm-item" data-spotlight>
+          <i>01</i>
+          <h4>3D Gölge &amp; PVsyst Simülasyonu</h4>
+          <p>Kurulum öncesi yıllık kWh üretimini %98 doğrulukla modelliyoruz.</p>
+        </div>
+        <div class="bm-item" data-spotlight>
+          <i>02</i>
+          <h4>A+ Tier-1 Ekipman Standartları</h4>
+          <p>N-Type Half-Cut paneller, yüksek verimli akıllı inverterler ve eloksallı alüminyum konstrüksiyon.</p>
+        </div>
+        <div class="bm-item" data-spotlight>
+          <i>03</i>
+          <h4>Resmi İzin &amp; Şebeke Entegrasyonu</h4>
+          <p>Çağrı mektubu, proje onayı, çift yönlü sayaç ve mahsuplaşma süreçlerinde tam yönetim.</p>
+        </div>
+        <div class="bm-item" data-spotlight>
+          <i>04</i>
+          <h4>Termal Drone &amp; Periyodik Bakım</h4>
+          <p>Kurulum sonrası termal kamera kontrolleri ve anlık performans takibi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENGINEERING FEASIBILITY & QUOTE GUIDANCE SECTION -->
+<section class="sec calc-sec" id="calc" data-pose="none">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="kicker" data-fade>MÜHENDİSLİK FİZİBİLİTESİ &amp; YATIRIM REHBERİ</p>
+      <h2 data-split>Size özel <span class="grad">GES projenizi</span> birlikte planlayalım.</h2>
+      <p class="txt center-txt" data-fade>Güneş enerjisi yatırımlarında doğru kurulu güç ve en kısa amortisman süresi; standart şablonlarla değil, tesisinizin konumuna, çatı/arazi yapısına ve tüketim profilinize özel mühendislik analiziyle belirlenir.</p>
+    </div>
+
+    <div class="info-guide-box" data-fade data-spotlight>
+      <div class="ig-grid">
+        <div class="ig-card" data-spotlight>
+          <span class="ig-tag">01 · TÜKETİM &amp; TARİFE ANALİZİ</span>
+          <h3>Elektrik Faturanızı Sıfırlayan Doğru Kapasite</h3>
+          <p>Konut, ticarethane, sanayi tesisi veya tarımsal sulama aboneliğinizin son 12 aylık tüketim verileri ve mahsuplaşma yönetmeliği incelenerek, ihtiyacınıza birebir örtüşen optimum kWp gücü belirlenir.</p>
+        </div>
+        <div class="ig-card" data-spotlight>
+          <span class="ig-tag">02 · UYDU, DRONE &amp; GÖLGE SİMÜLASYONU</span>
+          <h3>Çatı ve Arazi Yapınıza Özel 3D Modelleme</h3>
+          <p>Kurulum yapılacak lokasyonun yıllık güneşlenme radyasyonu, çatı eğimi, yönü (azimut açısı), statik taşıma kapasitesi ve olası gölgelenme faktörleri PVsyst yazılımıyla simüle edilir.</p>
+        </div>
+        <div class="ig-card" data-spotlight>
+          <span class="ig-tag">03 · FİNANSAL GERİ DÖNÜŞ &amp; GARANTİ</span>
+          <h3>Yüksek Verimli Tier-1 Ekipmanla Maksimum Kazanç</h3>
+          <p>144 Half-Cut N-Type TOPCon paneller ve akıllı inverter mimarisiyle kurulan sistemlerimiz, ortalama 3 ile 4.5 yıl arasında kendi yatırımını amorti ederek 25+ yıl boyunca ücretsiz elektrik üretir.</p>
+        </div>
+      </div>
+
+      <div class="ig-cta-banner">
+        <div class="ig-cta-text">
+          <div class="ig-badge"><span class="pulse-dot"></span> ÜCRETSİZ ÖN FİZİBİLİTE &amp; KEŞİF HİZMETİ</div>
+          <h3>Net sistem gücü ve resmi fiyat teklifi için mühendislerimize ulaşın.</h3>
+          <p>Aylık ortalama elektrik faturanızı ve kurulum yapılacak il/ilçe bilgisini aşağıdaki <b>Teklif Formu</b> üzerinden bize iletin; uzman ekibimiz projenize özel panel sayısını, yıllık üretim miktarını ve anahtar teslim teklifinizi hazırlasın.</p>
+        </div>
+        <div class="ig-cta-actions">
+          <a href="#contact" class="btn solid" data-cur data-magnetic>Teklif Formuna Git &amp; Başvur →</a>
+          <a href="https://wa.me/905467285656?text=Merhaba%20Ramazan%20Bey%2C%20GES%20projemiz%20i%C3%A7in%20%C3%BCcretsiz%20fizibilite%20ve%20fiyat%20teklifi%20almak%20istiyorum." target="_blank" rel="noopener" class="btn glass" data-cur data-magnetic>WhatsApp'tan Hızlı Teklif Al</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="sec mission" id="mission" data-pose="mission">
+  <div class="wrap">
+    <p class="kicker center" data-fade>VİZYON &amp; MİSYONUMUZ</p>
+    <p class="statement" id="statement">Güneşin sınırsız enerjisini yüksek verimli fotovoltaik mühendislikle elektriğe çeviriyor; işletmelerimizin ve konutlarımızın enerji maliyetlerini sıfırlarken Türkiye'nin temiz enerji bağımsızlığına güç katıyoruz.</p>
+    <div class="pillars">
+      <div class="pillar" data-fade data-spotlight>
+        <div class="p-top"><b>01</b><span>SIFIR EMİSYON</span></div>
+        <h3>Sürdürülebilir Gelecek</h3>
+        <p>Karbon ayak izinizi sıfırlayan, yeşil mutabakata tam uyumlu, doğaya saygılı temiz enerji santralleri inşa ediyoruz.</p>
+      </div>
+      <div class="pillar" data-fade data-spotlight>
+        <div class="p-top"><b>02</b><span>MAKSİMUM VERİM</span></div>
+        <h3>Üstün Fotovoltaik Performans</h3>
+        <p>Düşük ışınımda dahi yüksek üretim sağlayan N-Type Bi-Facial ve Half-Cut hücre mimarisiyle maksimum kWh hasadı sağlıyoruz.</p>
+      </div>
+      <div class="pillar" data-fade data-spotlight>
+        <div class="p-top"><b>03</b><span>25 YIL GÜVENCE</span></div>
+        <h3>Kurumsal Güven &amp; Süreklilik</h3>
+        <p>Uluslararası sertifikalı bileşenler, sağlam statik konstrüksiyon ve 7/24 mühendislik desteğiyle yatırımınızı koruyoruz.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GES (horizontal) -->
+<section class="ges" id="ges" data-pose="none">
+  <div class="ges-head wrap">
+    <div>
+      <p class="kicker">ANAHTAR TESLİM GES ÇÖZÜMLERİ</p>
+      <h2 data-split>Her ölçeğe özel <span class="grad">güneş santrali.</span></h2>
+    </div>
+    <div class="ges-hint">KAYDIRARAK İNCELEYİN →</div>
+  </div>
+  <div class="ges-track" id="gesTrack">
+    <article class="gcard" style="background-image:url(assets/img/ges_konut.jpg);background-position:center;background-size:cover" data-spotlight>
+      <div class="gc-badges"><span>5 – 25 kWp</span><span>Estetik Siyah Seri</span></div>
+      <div class="gc-in">
+        <b>01 · KONUT &amp; VİLLA</b>
+        <h3>Konut Çatı GES</h3>
+        <p>Mimariyle bütünleşen tam siyah monokristal panellerle evinizin elektrik faturasını sıfırlayın, elektrikli aracınızı güneşle şarj edin ve fazla enerjiyi şebekeye satın.</p>
+        <a href="#contact" class="gc-link" data-cur>Villa &amp; Konut Teklifi Al →</a>
+      </div>
+    </article>
+    <article class="gcard" style="background-image:url(assets/img/ges_endustriyel.jpg);background-position:center;background-size:cover" data-spotlight>
+      <div class="gc-badges"><span>100 kWp – 10+ MWp</span><span>3.2 Yıl Amortisman</span></div>
+      <div class="gc-in">
+        <b>02 · SANAYİ &amp; TİCARETHANE</b>
+        <h3>Ticari &amp; Endüstriyel GES</h3>
+        <p>Fabrika, organize sanayi tesisi, soğuk hava deposu ve oteller için en büyük gider kalemi olan elektriği kalıcı rekabet avantajına dönüştüren yüksek güçlü çatı santralleri.</p>
+        <a href="#contact" class="gc-link" data-cur>Endüstriyel Fizibilite İste →</a>
+      </div>
+    </article>
+    <article class="gcard" style="background-image:url(assets/img/ges_tarim.jpg);background-position:center;background-size:cover" data-spotlight>
+      <div class="gc-badges"><span>Şebekeden Bağımsız / On-Grid</span><span>Mazot &amp; Fatura Sonu</span></div>
+      <div class="gc-in">
+        <b>03 · TARIM &amp; SULAMA</b>
+        <h3>Tarımsal Sulama GES</h3>
+        <p>Derin kuyu dalgıç pompalar ve yağmurlama/damlama sistemleri için solar sürücülü, kesintisiz ve sıfır yakıt maliyetli tarımsal sulama paketleri.</p>
+        <a href="#contact" class="gc-link" data-cur>Sulama Projesi Hesaplat →</a>
+      </div>
+    </article>
+    <article class="gcard" style="background-image:url(assets/img/ges_arazi.jpg);background-position:center;background-size:cover" data-spotlight>
+      <div class="gc-badges"><span>Lisanssız &amp; Lisanslı</span><span>Çift Yüzeyli Bi-Facial</span></div>
+      <div class="gc-in">
+        <b>04 · YATIRIM SANTRALLERİ</b>
+        <h3>Arazi GES Kurulumu</h3>
+        <p>Marjinal tarım arazileri ve sanayi imarlı sahalarda yüksek kapasiteli, sıcak daldırma galvaniz çelik konstrüksiyonlu, uzun ömürlü güneş enerjisi santralleri.</p>
+        <a href="#contact" class="gc-link" data-cur>Arazi Yatırım Danışmanlığı →</a>
+      </div>
+    </article>
+    <article class="gcard" style="background-image:url(assets/img/ges_depolama.jpg);background-position:center;background-size:cover" data-spotlight>
+      <div class="gc-badges"><span>LiFePO4 Batarya</span><span>7/24 Kesintisiz Güç</span></div>
+      <div class="gc-in">
+        <b>05 · HİBRİT &amp; BESS</b>
+        <h3>Depolamalı Sistemler</h3>
+        <p>Yeni nesil Lityum-Demir-Fosfat (LiFePO4) enerji depolama üniteleriyle gündüz üretilen elektriği gece kullanın, şebeke kesintilerinden etkilenmeyin.</p>
+        <a href="#contact" class="gc-link" data-cur>Depolama Çözümü İste →</a>
+      </div>
+    </article>
+    <article class="gcard" style="background-image:url(assets/img/ges_bakim.jpg);background-position:center;background-size:cover" data-spotlight>
+      <div class="gc-badges"><span>Termal Kamera &amp; SCADA</span><span>+%18 Verim Artışı</span></div>
+      <div class="gc-in">
+        <b>06 · O&amp;M HİZMETLERİ</b>
+        <h3>Bakım, Temizlik &amp; İzleme</h3>
+        <p>Termal drone ile hot-spot tespiti, saf suyla robotik panel temizliği, IV-curve ölçümleri ve 7/24 uzaktan arıza/performans izleme hizmetleri.</p>
+        <a href="#contact" class="gc-link" data-cur>Bakım Randevusu Oluştur →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ARGE -->
+<section class="sec arge" id="arge" data-pose="arge">
+  <div class="bg"><img src="assets/img/arge.jpg" alt="AR-GE güneş hücresi" data-parallax></div>
+  <div class="veil v-arge"></div>
+  <div class="wrap arge-c">
+    <p class="kicker" data-fade>AR-GE &amp; 3D MODÜL ANATOMİSİ</p>
+    <h2 data-split>Katman katman<br><span class="grad">üstün mühendislik.</span></h2>
+    <p class="txt" data-fade>Sağdaki 3D simülasyonda patlatılmış katmanlarını gördüğünüz <b>SZ-550M</b> modülümüz; mikro-çatlak dirençli çoklu busbar teknolojisi, yansıma önleyici nano kaplamalı temperli camı ve IP68 korumalı bağlantı mimarisiyle en zorlu iklim koşullarında bile 25+ yıl maksimum üretim sağlar.</p>
+
+    <div class="metrics" data-fade>
+      <div class="m-box" data-spotlight><b data-count="22" data-suf=".8%">0</b><span>Hücre Dönüşüm Verimi</span></div>
+      <div class="m-box" data-spotlight><b data-count="5400" data-suf=" Pa">0</b><span>Kar &amp; Rüzgar Yükü Dayanımı</span></div>
+      <div class="m-box" data-spotlight><b data-count="144" data-suf=" HC">0</b><span>Half-Cut Monokristal Hücre</span></div>
+    </div>
+
+    <!-- INTERACTIVE LAYER ANATOMY -->
+    <div class="layer-list" data-fade>
+      <div class="layer-item active" data-layer="1" data-cur>
+        <span class="l-num">01</span>
+        <div>
+          <strong>3.2mm Düşük Demirli ARC Temperli Solar Cam</strong>
+          <small>Işık geçirgenliğini %94.5'e çıkaran hidrofobik, kendi kendini temizleyen anti-reflektif nano kaplama.</small>
+        </div>
+      </div>
+      <div class="layer-item" data-layer="2" data-cur>
+        <span class="l-num">02</span>
+        <div>
+          <strong>UV Korumalı Çapraz Bağlı EVA Kapsülleme</strong>
+          <small>Hücreleri nem, termal şok ve PID (Potansiyel Kaynaklı Bozulma) etkilerine karşı izole eden optik film.</small>
+        </div>
+      </div>
+      <div class="layer-item" data-layer="3" data-cur>
+        <span class="l-num">03</span>
+        <div>
+          <strong>144 Half-Cut N-Type Monokristal Hücre Matrisi (10BB)</strong>
+          <small>Yarım kesim mimarisiyle iç direnç kayıplarını 4 kat azaltan, gölge toleransı yüksek saf silikon plakalar.</small>
+        </div>
+      </div>
+      <div class="layer-item" data-layer="4" data-cur>
+        <span class="l-num">04</span>
+        <div>
+          <strong>Çok Katmanlı Tedlar / PVDF Kompozit Backsheet</strong>
+          <small>1500V DC sistem voltajına dayanıklı, yüksek ısı dağılımı sağlayan arka koruma katmanı.</small>
+        </div>
+      </div>
+      <div class="layer-item" data-layer="5" data-cur>
+        <span class="l-num">05</span>
+        <div>
+          <strong>Eloksallı Alüminyum Şasi &amp; 3'lü IP68 Junction Box</strong>
+          <small>35mm eloksallı havacılık alüminyumu çerçeve, bypass diyotlu bağlantı kutuları ve orijinal MC4 konnektörler.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KESIF -->
+<section class="sec kesif" id="kesif" data-pose="none">
+  <div class="bg fixedbg"><img src="assets/img/kesif.jpg" alt="Saha keşfi" data-parallax></div>
+  <div class="veil v-kesif"></div>
+  <div class="wrap kesif-g">
+    <div class="k-left">
+      <p class="kicker">MÜHENDİSLİK SÜRECİ</p>
+      <h2 data-split>Keşiften üretime<br><span class="grad">4 kusursuz adım.</span></h2>
+      <p class="txt">Her proje, mühendislerimizin drone ve lazer ölçüm ekipmanlarıyla yerinde yaptığı <b>ücretsiz saha keşfi</b> ile başlar.</p>
+      <a href="#contact" class="btn solid" data-cur data-magnetic>Ücretsiz Keşif Talep Et →</a>
+    </div>
+    <div class="k-steps">
+      <div class="kstep" data-spotlight><b>01</b><h3>Drone ile Saha Keşfi &amp; Statik Analiz</h3><p>Uzman ekibimiz çatı veya arazi yapısını, 3 boyutlu gölgelenme profilini, çatı statiğini ve trafo/şebeke bağlantı noktasını yerinde inceler. Tamamen ücretsizdir.</p></div>
+      <div class="kstep" data-spotlight><b>02</b><h3>PVsyst Simülasyonu &amp; Finansal Rapor</h3><p>Saatlik tüketim verilerinize göre optimum kWp kapasitesi, yıllık üretim tahmini ve net amortisman süresi mühendislik raporu olarak sunulur.</p></div>
+      <div class="kstep" data-spotlight><b>03</b><h3>Resmi İzinler &amp; Anahtar Teslim Kurulum</h3><p>Çağrı mektubu, statik-elektrik proje onayları, Tier-1 ekipman montajı ve TEDAŞ geçici kabul süreçleri eksiksiz tamamlanır.</p></div>
+      <div class="kstep" data-spotlight><b>04</b><h3>7/24 SCADA İzleme &amp; Garanti Desteği</h3><p>Santraliniz devreye alındıktan sonra mobil uygulama üzerinden anlık üretiminizi izler, periyodik bakım güvencesiyle 25+ yıl kesintisiz kazanç sağlarsınız.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec contact" id="contact" data-pose="contact">
+  <div class="wrap">
+    <p class="kicker center" data-fade>BİZE ULAŞIN</p>
+    <h2 class="big center" data-split>Gücünüzü güneşten <span class="grad">bugün</span> alın.</h2>
+    <div class="c-grid">
+      <div class="c-info" data-fade>
+        <div class="exec-badge">YÖNETİM &amp; PROJE KOORDİNASYON</div>
+        <h3>Ramazan Sezgin</h3>
+        <p class="c-sub">Ücretsiz saha keşfi, anahtar teslim proje teklifi ve teknik danışmanlık için doğrudan iletişime geçebilirsiniz.</p>
+        <a href="tel:+905467285656" class="c-row" data-cur data-spotlight><i>☎</i><div><small>Doğrudan Telefon Hattı</small><b>0546 728 5656</b></div></a>
+        <a href="https://wa.me/905467285656?text=Merhaba%20Ramazan%20Bey%2C%20GES%20projesi%20i%C3%A7in%20bilgi%20ve%20teklif%20almak%20istiyorum." target="_blank" rel="noopener" class="c-row" data-cur data-spotlight><i>✆</i><div><small>WhatsApp Hızlı Destek</small><b>Anında Mesaj Gönderin →</b></div></a>
+        <a href="https://www.instagram.com/sezginlersolarenerji" target="_blank" rel="noopener" class="c-row" data-cur data-spotlight><i>◎</i><div><small>Resmi Instagram Hesabı</small><b>@sezginlersolarenerji</b></div></a>
+      </div>
+      <form class="c-form" id="form" data-fade data-spotlight>
+        <div class="cf-head">
+          <h4>Hızlı Keşif &amp; Teklif Formu</h4>
+          <span>Bilgilerinizi girin, saniyeler içinde WhatsApp üzerinden mühendislik ekibimize bağlanın.</span>
+        </div>
+        <div class="cf-row2">
+          <input name="ad" placeholder="Adınız Soyadınız" required>
+          <input name="tel" type="tel" placeholder="Telefon Numaranız" required>
+        </div>
+        <div class="cf-row2">
+          <select name="tur" id="formTur">
+            <option value="Konut GES">Konut / Villa Çatı GES</option>
+            <option value="Ticari / Fabrika GES">Ticari / Endüstriyel Fabrika GES</option>
+            <option value="Tarımsal Sulama GES">Tarımsal Sulama GES</option>
+            <option value="Arazi GES">Arazi GES Santrali</option>
+            <option value="Depolamalı Sistem">Hibrit / Batarya Depolamalı Sistem</option>
+          </select>
+          <input name="fatura" id="formFatura" placeholder="Aylık Ortalama Elektrik Faturası (₺)">
+        </div>
+        <textarea name="mesaj" id="formMesaj" rows="4" placeholder="Kurulum yapılacak il/ilçe ve projeniz hakkında kısa bilgi..."></textarea>
+        <button class="btn solid full-btn" type="submit" data-cur data-magnetic>Ücretsiz Keşif &amp; Teklif İste · WhatsApp →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-brand">
+    <a href="#home" class="foot-logo-wrap" data-cur>
+      <img src="assets/img/logo-full.png?v=5" alt="Sezginler Solar Enerji Resmi Logosu" class="foot-logo">
+    </a>
+  </div>
+  <div class="giant">SEZGİNLER SOLAR</div>
+  <div class="wrap foot-r">
+    <span>© 2026 Sezginler Solar Enerji Sistemleri. Tüm hakları saklıdır.</span>
+    <span>Ramazan Sezgin · <a href="tel:+905467285656">0546 728 5656</a> · <a href="https://www.instagram.com/sezginlersolarenerji" target="_blank" rel="noopener">@sezginlersolarenerji</a></span>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/905467285656?text=Merhaba%2C%20GES%20hakk%C4%B1nda%20teklif%20almak%20istiyorum." target="_blank" rel="noopener" aria-label="WhatsApp" data-cur>
+  <span class="wa-tip">Hızlı Teklif Al</span>
+  <svg viewBox="0 0 32 32" width="30" height="30" fill="#fff"><path d="M16 3C9 3 3.4 8.6 3.4 15.5c0 2.3.6 4.4 1.7 6.3L3 29l7.4-1.9c1.8 1 3.8 1.5 5.6 1.5 6.9 0 12.6-5.6 12.6-12.5S22.9 3 16 3zm0 22.900c-1.800 0-3.500-.5-5-1.400l-.4-.2-4.400 1.100 1.200-4.300-.3-.4a10.300 10.300 0 1 1 8.900 5.200zm5.700-7.700c-.3-.2-1.800-.9-2.100-1s-.5-.2-.7.200-.8 1-1 1.200-.4.200-.7.100a8.400 0 0 1-4.200-3.700c-.3-.6.300-.5.900-1.700.1-.2 0-.4 0-.5l-1-2.300c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.100-.8.400s-1 1-1 2.500 1.100 2.900 1.200 3.100c.2.200 2.100 3.300 5.200 4.500 2 .8 2.800.9 3.800.7.6-.1 1.800-.7 2-1.500.3-.7.3-1.300.2-1.500s-.3-.2-.6-.4z"/></svg>
+</a>
+
+<script src="assets/js/vendor/three.min.js"></script>
+<script src="assets/js/vendor/gsap.min.js"></script>
+<script src="assets/js/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/js/vendor/lenis.min.js"></script>
+<script src="assets/js/main.js?v=7"></script>
+</body>
+</html>
